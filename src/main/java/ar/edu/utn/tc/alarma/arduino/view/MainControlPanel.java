@@ -75,8 +75,11 @@ public class MainControlPanel extends javax.swing.JFrame {
         bedroom4LightButton.setEnabled(allow);
         hallLightButton.setEnabled(allow);
         bathroom3LightButton.setEnabled(allow);
-        switchAlarmaMenuItem.setEnabled(allow);
         stairsLightButton.setEnabled(allow);
+        //Menues
+        switchAlarmaMenuItem.setEnabled(allow);
+        allLightsMenuItem.setEnabled(allow);
+
         //Sensors
         hallMovementSensorButton.setEnabled(allow);
         hallWindow1SensorButton.setEnabled(allow);
@@ -276,6 +279,7 @@ public class MainControlPanel extends javax.swing.JFrame {
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         iniciarPanelMenuItem = new javax.swing.JCheckBoxMenuItem();
+        allLightsMenuItem = new javax.swing.JCheckBoxMenuItem();
         switchAlarmaMenuItem = new javax.swing.JCheckBoxMenuItem();
         exitMenuItem = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
@@ -411,6 +415,15 @@ public class MainControlPanel extends javax.swing.JFrame {
         });
         fileMenu.add(iniciarPanelMenuItem);
 
+        allLightsMenuItem.setText("On/Off Luces");
+        allLightsMenuItem.setEnabled(false);
+        allLightsMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                allLightsMenuItemActionPerformed(evt);
+            }
+        });
+        fileMenu.add(allLightsMenuItem);
+
         switchAlarmaMenuItem.setText("Activar alarma");
         switchAlarmaMenuItem.setToolTipText("Arma la alarma si es posible");
         switchAlarmaMenuItem.setEnabled(false);
@@ -504,8 +517,30 @@ public class MainControlPanel extends javax.swing.JFrame {
                 JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_aboutMenuItemActionPerformed
 
+    private void allLightsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_allLightsMenuItemActionPerformed
+        stairsLightButton.setSelected(!stairsLightButton.isSelected());
+        switchLight(stairsLightButton, Components.STAIR_LIGHT);
+
+        bedroom3LightButton.setSelected(!bedroom3LightButton.isSelected());
+        switchLight(bedroom3LightButton, Components.BEDROOM3_LIGHT);
+
+        bedroom2LightButton.setSelected(!bedroom2LightButton.isSelected());
+        switchLight(bedroom2LightButton, Components.BEDROOM2_LIGHT);
+
+        bathroom3LightButton.setSelected(!bathroom3LightButton.isSelected());
+        switchLight(bathroom3LightButton, Components.BATHROOM3_LIGHT);
+
+        bedroom4LightButton.setSelected(!bedroom4LightButton.isSelected());
+        switchLight(bedroom4LightButton, Components.BEDROOM4_LIGHT);
+
+        hallLightButton.setSelected(!hallLightButton.isSelected());
+        switchLight(hallLightButton, Components.HALL_LIGHT);
+
+    }//GEN-LAST:event_allLightsMenuItemActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem aboutMenuItem;
+    private javax.swing.JCheckBoxMenuItem allLightsMenuItem;
     private javax.swing.JToggleButton bathroom3LightButton;
     private javax.swing.JToggleButton bedroom2LightButton;
     private javax.swing.JToggleButton bedroom2WindowSensorButton;
