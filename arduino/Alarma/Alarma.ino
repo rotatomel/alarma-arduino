@@ -116,7 +116,7 @@ void switchAlarm(int light) {
 
 void checkSensors() {
 
-
+  //Comienzo el chequeo de cada uno de los sensores
   if (digitalRead(BEDROOM_3_WINDOW_SENSOR) == HIGH) {
     if (bedroom3Window) {
       bedroom3Window = false;
@@ -222,6 +222,9 @@ void checkSensors() {
 
     }
   }
+  //Finalizo el chequeo de cada uno de los sensores
+
+  //Si la alarama se dispara aviso a la interfaz gráfica y ejecuto el método
   if (alarmTriggered) {
     Serial.println(ALARM_TRIGGERED_CODE_EVENT);
     alarmTriggered = false;
@@ -229,6 +232,8 @@ void checkSensors() {
   }
 }
 
+//Este método es llamado cuando la alarma se dispara
+// y hace que las luces de la casa destellen con semiperiodo de 120ms durante 1 minuto
 void alarm() {
   long time = 0;
   while (time < 120) {
