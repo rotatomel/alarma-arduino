@@ -47,6 +47,7 @@ public class MainControlPanel extends javax.swing.JFrame {
     private boolean systemEngaged = false;
     private boolean alarmTriggered = false;
     private boolean alarmEnabled = false;
+    private Components sensorViolated = null;
 
     private ArduinoAlarmCtl ctl;
 
@@ -75,6 +76,7 @@ public class MainControlPanel extends javax.swing.JFrame {
         hallLightButton.setEnabled(allow);
         bathroom3LightButton.setEnabled(allow);
         switchAlarmaMenuItem.setEnabled(allow);
+        stairsLightButton.setEnabled(allow);
         //Sensors
         hallMovementSensorButton.setEnabled(allow);
         hallWindow1SensorButton.setEnabled(allow);
@@ -102,35 +104,37 @@ public class MainControlPanel extends javax.swing.JFrame {
 
         //Verificar que no haya sensores disparados
         //Enviar mail
-        if (checkSensors()) {
-            if (button.isSelected()) {
+        if (button.isSelected()) {
+            if (checkSensors()) {
                 button.setText("Desactivar alarma");
                 ctl.switchLigth(alarm, true);
                 alarmEnabled = true;
                 LOG.log(Level.INFO, String.format("El componente %s está ahora %s", alarm, ON));
             } else {
-                button.setText("Activar alarma");
-                ctl.switchLigth(alarm, false);
-                alarmEnabled = false;
-                LOG.log(Level.INFO, String.format("El componente %s está ahora %s", alarm, OFF));
-                if (alarmTriggered) {
-                    new Thread(new Runnable() {
-
-                        @Override
-                        public void run() {
-                            SendMail.sendMail("rotatomel@gmail.com", "Alarma desactivada!", "ALARMA");
-                        }
-                    }).start();
-                    alarmTriggered = false;
-                }
+                button.setSelected(false);
+                showMessageDialog(this, "No se puede activar la alarma hasta que todas las áreas estén seguras!",
+                        "Alarma", JOptionPane.WARNING_MESSAGE);
 
             }
         } else {
-            button.setSelected(false);
-            showMessageDialog(this, "No se puede activar la alarma hasta que todas las áreas estén seguras!",
-                    "Alarma", JOptionPane.WARNING_MESSAGE);
+            button.setText("Activar alarma");
+            ctl.switchLigth(alarm, false);
+            alarmEnabled = false;
+            LOG.log(Level.INFO, String.format("El componente %s está ahora %s", alarm, OFF));
+            if (alarmTriggered) {
+                new Thread(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        SendMail.sendMail("rotatomel@gmail.com", "La alarma se ha disparado y ha sido desactivada!",
+                                "ALARMA");
+                    }
+                }).start();
+                alarmTriggered = false;
+            }
 
         }
+
     }
 
     private boolean checkSensors() {
@@ -151,6 +155,9 @@ public class MainControlPanel extends javax.swing.JFrame {
      */
     public void switchSensors(int idSensor, boolean on) {
         Components component = Components.getComponentById(idSensor);
+        if (alarmEnabled) {
+            sensorViolated = component;
+        }
         switch (component) {
             case BEDROOM3_WINDOW_SENSOR:
                 switchSensorButtton(bedroom3WindowSensorButton, on);
@@ -190,14 +197,15 @@ public class MainControlPanel extends javax.swing.JFrame {
      * Se invoca cuando se dispara la alarma
      */
     public void triggerAlarm() {
+        String message = String.format("Te están choriando hermano!\nSe ha detectado un intruso en: %s", sensorViolated);
         new Thread(new Runnable() {
 
             @Override
             public void run() {
-                SendMail.sendMail("rotatomel@gmail.com", "Alarma activada!", "ALARMA");
+                SendMail.sendMail("rotatomel@gmail.com", message, "ALARMA");
             }
         }).start();
-        showMessageDialog(this, "Se ha detectado un intruso!", "Alarma", JOptionPane.WARNING_MESSAGE);
+        showMessageDialog(this, message, "Alarma", JOptionPane.WARNING_MESSAGE);
         alarmTriggered = true;
     }
 
@@ -377,6 +385,7 @@ public class MainControlPanel extends javax.swing.JFrame {
         getContentPane().add(bedroom3WindowSensorButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, -1, -1));
 
         hallMovementSensorButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/unlock.png"))); // NOI18N
+        hallMovementSensorButton.setSelected(true);
         hallMovementSensorButton.setToolTipText("Sensor de movimiento del living");
         hallMovementSensorButton.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/lock.png"))); // NOI18N
         hallMovementSensorButton.addActionListener(new java.awt.event.ActionListener() {
@@ -423,15 +432,20 @@ public class MainControlPanel extends javax.swing.JFrame {
 
         menuBar.add(fileMenu);
 
-        helpMenu.setMnemonic('h');
-        helpMenu.setText("Help");
+        helpMenu.setMnemonic('y');
+        helpMenu.setText("Ayuda");
 
         contentsMenuItem.setMnemonic('c');
-        contentsMenuItem.setText("Contents");
+        contentsMenuItem.setText("Contenidos");
         helpMenu.add(contentsMenuItem);
 
         aboutMenuItem.setMnemonic('a');
-        aboutMenuItem.setText("About");
+        aboutMenuItem.setText("Acerca de...");
+        aboutMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aboutMenuItemActionPerformed(evt);
+            }
+        });
         helpMenu.add(aboutMenuItem);
 
         menuBar.add(helpMenu);
@@ -484,6 +498,11 @@ public class MainControlPanel extends javax.swing.JFrame {
     private void hallMovementSensorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hallMovementSensorButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_hallMovementSensorButtonActionPerformed
+
+    private void aboutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutMenuItemActionPerformed
+        showMessageDialog(this, "Sistema de control de alarma desarrollado por alumnos de 4to año de ISI para Teoría de Control.\nAutores:\nMotter, Pamela\nSilva Beker, Eliana\nSilva, Omar\nTato Rothamel, Rodrigo", "Acerca de",
+                JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_aboutMenuItemActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem aboutMenuItem;
