@@ -98,7 +98,9 @@ void switchLights(int light) {
   }
 }
 
-
+//Prende o apaga la alarma
+//Similar al método de las luces.
+//Evita que la alarma se prenda si hay algun sensor activo.
 void switchAlarm(int light) {
   //Verificar que ningun sensor este activado para poder activar alarma
 
@@ -119,6 +121,8 @@ void switchAlarm(int light) {
   }
 }
 
+//Chequea el estado de los sensores y dispara la alarma si se desactiva
+//uno de ellos mientras la alarma está activada.
 void checkSensors() {
 
   //Comienzo el chequeo de cada uno de los sensores
