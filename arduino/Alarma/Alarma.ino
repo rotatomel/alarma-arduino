@@ -82,6 +82,11 @@ void loop() {
   // wait for a second
 }
 
+//Prende o apaga las luces
+//Recibe como parámetro el número de pin al que está conectada la luz
+//Si el número es positivo prende la luz y si es negativo la apaga
+//Como no se pueden recibir números negativos se le resta 256 para
+//obtener el número de pin.
 void switchLights(int light) {
   if ((light >= 2 && light <= 7) || (light >= 248 && light <= 254)) {
     //Serial.println(light);
