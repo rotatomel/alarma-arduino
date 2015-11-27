@@ -22,19 +22,61 @@ package ar.edu.utn.tc.alarma.arduino.ctl;
  */
 public enum Components {
 
+    /**
+     * Luz del dormitorio 2
+     */
     BEDROOM2_LIGHT(3),
+    /**
+     * Luz del dormitorio 3
+     */
     BEDROOM3_LIGHT(2),
+    /**
+     * Luz del dormitorio 4
+     */
     BEDROOM4_LIGHT(6),
+    /**
+     * Luz del living
+     */
     HALL_LIGHT(4),
+    /**
+     * Luz del baño
+     */
     BATHROOM3_LIGHT(5),
+    /**
+     * Alarma
+     */
     ALARM(13),
+    /**
+     * Luz de la escalera
+     */
     STAIR_LIGHT(7),
+    /**
+     * Luz del dormitorio 3
+     */
     BEDROOM3_WINDOW_SENSOR(8),
+    /**
+     * Sensor de la ventana del dormitorio 2
+     */
     BEDROOM2_WINDOW_SENSOR(9),
+    /**
+     * Sensor de la ventana 1 del living
+     */
     HALL_WINDOW1_SENSOR(10),
+    /**
+     * Sensor de la ventana 2 del living
+     */
     HALL_WINDOW2_SENSOR(11),
+    /**
+     * Sensor de la ventana del dormitorio 4
+     */
     BEDROOM4_WINDOW_SENSOR(12),
+    /**
+     * Sensor de la puerta principal
+     */
     MAIN_DOOR_SENSOR(14),
+    /**
+     * Sensor de movimiento del living
+     */
     HALL_MOVEMENT_SENSOR(15);
 
     private final int idComponent;

@@ -24,7 +24,12 @@ import ar.edu.utn.tc.alarma.arduino.view.MainControlPanel;
  */
 public class Main {
 
-    public static void main(String[] args) throws SerialException {
+    /**
+     * Método principal de entrada al sistema
+     *
+     * @param args argumentos de la línea de comandos. Son ignorados por completo.
+     */
+    public static void main(String[] args) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.

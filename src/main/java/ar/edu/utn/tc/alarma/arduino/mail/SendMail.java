@@ -15,11 +15,6 @@
  */
 package ar.edu.utn.tc.alarma.arduino.mail;
 
-/**
- * Clase utilitaria para facilitar el envío de mails. Actualmente hace el envío a través de mandrill.
- *
- * @author Rodrigo M. Tato Rothamel mailto:rotatomel@gmail.com
- */
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -31,6 +26,11 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+/**
+ * Clase utilitaria para facilitar el envío de mails. Actualmente hace el envío a través de mandrill.
+ *
+ * @author Rodrigo M. Tato Rothamel mailto:rotatomel@gmail.com
+ */
 public class SendMail {
 
     private static final Logger LOG = Logger.getLogger(SendMail.class.getName());

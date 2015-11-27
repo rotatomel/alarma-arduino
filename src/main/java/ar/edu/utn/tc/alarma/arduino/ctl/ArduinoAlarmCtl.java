@@ -38,6 +38,13 @@ public class ArduinoAlarmCtl implements Serializable {
     private final Timer updateTimer;
     private final MainControlPanel panel;
 
+    /**
+     * Crea una instancia de ArduinoAlarmCtl con el puerto <code>port</code> y la interfaz gráfica <code>panel</code>.
+     *
+     * @param port String el puerto serie a conectarse
+     * @param panel MainControlPanel la interfaz gráfica para controlar
+     * @throws SerialException si el puerto no está disponible.
+     */
     public ArduinoAlarmCtl(String port, MainControlPanel panel) throws SerialException {
         serial = new Serial(port);
         this.panel = panel;
@@ -51,6 +58,11 @@ public class ArduinoAlarmCtl implements Serializable {
         updateTimer.start();
     }
 
+    /**
+     * Termina con el control y devuelve los recursos al sistema
+     *
+     * @throws IOException si ocurre un problema
+     */
     public void dispose() throws IOException {
         serial.dispose();
     }
