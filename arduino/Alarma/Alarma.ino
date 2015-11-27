@@ -233,7 +233,7 @@ void checkSensors() {
 }
 
 //Este método es llamado cuando la alarma se dispara
-// y hace que las luces de la casa destellen con semiperiodo de 120ms durante 1 minuto
+// y hace que las luces de la casa destellen con semiperiodo de 250ms durante 1 minuto
 void alarm() {
   long time = 0;
   while (time < 120) {
