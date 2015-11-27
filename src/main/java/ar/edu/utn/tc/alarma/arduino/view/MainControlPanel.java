@@ -361,31 +361,61 @@ public class MainControlPanel extends javax.swing.JFrame {
         mainDoorSensorButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/unlock.png"))); // NOI18N
         mainDoorSensorButton.setToolTipText("Sensor de la puerta principal");
         mainDoorSensorButton.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/lock.png"))); // NOI18N
+        mainDoorSensorButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mainDoorSensorButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(mainDoorSensorButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 240, -1, -1));
 
         bedroom4WindowSensorButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/unlock.png"))); // NOI18N
         bedroom4WindowSensorButton.setToolTipText("Sensor de ventana de habitación 4");
         bedroom4WindowSensorButton.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/lock.png"))); // NOI18N
+        bedroom4WindowSensorButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bedroom4WindowSensorButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(bedroom4WindowSensorButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 360, -1, -1));
 
         hallWindow1SensorButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/unlock.png"))); // NOI18N
         hallWindow1SensorButton.setToolTipText("Sensor de ventana 1 de living");
         hallWindow1SensorButton.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/lock.png"))); // NOI18N
+        hallWindow1SensorButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hallWindow1SensorButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(hallWindow1SensorButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 520, -1, -1));
 
         hallWindow2SensorButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/unlock.png"))); // NOI18N
         hallWindow2SensorButton.setToolTipText("Sensor de ventana 2 de living");
         hallWindow2SensorButton.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/lock.png"))); // NOI18N
+        hallWindow2SensorButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hallWindow2SensorButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(hallWindow2SensorButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 520, -1, -1));
 
         bedroom2WindowSensorButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/unlock.png"))); // NOI18N
         bedroom2WindowSensorButton.setToolTipText("Sensor de ventana de habitación 2");
         bedroom2WindowSensorButton.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/lock.png"))); // NOI18N
+        bedroom2WindowSensorButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bedroom2WindowSensorButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(bedroom2WindowSensorButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, -1, -1));
 
         bedroom3WindowSensorButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/unlock.png"))); // NOI18N
         bedroom3WindowSensorButton.setToolTipText("Sensor de ventana de habitación 1");
         bedroom3WindowSensorButton.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/lock.png"))); // NOI18N
+        bedroom3WindowSensorButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bedroom3WindowSensorButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(bedroom3WindowSensorButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, -1, -1));
 
         hallMovementSensorButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/unlock.png"))); // NOI18N
@@ -509,7 +539,7 @@ public class MainControlPanel extends javax.swing.JFrame {
     }//GEN-LAST:event_switchAlarmaMenuItemActionPerformed
 
     private void hallMovementSensorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hallMovementSensorButtonActionPerformed
-        // TODO add your handling code here:
+        avoidClick((JToggleButton) evt.getSource());
     }//GEN-LAST:event_hallMovementSensorButtonActionPerformed
 
     private void aboutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutMenuItemActionPerformed
@@ -537,6 +567,39 @@ public class MainControlPanel extends javax.swing.JFrame {
         switchLight(hallLightButton, Components.HALL_LIGHT);
 
     }//GEN-LAST:event_allLightsMenuItemActionPerformed
+
+    private void mainDoorSensorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainDoorSensorButtonActionPerformed
+        avoidClick((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_mainDoorSensorButtonActionPerformed
+
+    private void bedroom4WindowSensorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bedroom4WindowSensorButtonActionPerformed
+        avoidClick((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_bedroom4WindowSensorButtonActionPerformed
+
+    private void bedroom2WindowSensorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bedroom2WindowSensorButtonActionPerformed
+        avoidClick((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_bedroom2WindowSensorButtonActionPerformed
+
+    private void bedroom3WindowSensorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bedroom3WindowSensorButtonActionPerformed
+        avoidClick((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_bedroom3WindowSensorButtonActionPerformed
+
+    private void hallWindow1SensorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hallWindow1SensorButtonActionPerformed
+        avoidClick((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_hallWindow1SensorButtonActionPerformed
+
+    private void hallWindow2SensorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hallWindow2SensorButtonActionPerformed
+        avoidClick((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_hallWindow2SensorButtonActionPerformed
+
+    /**
+     * Evita que el usuario haga clic en un sensor para desactivarlo/activarlo
+     *
+     * @param btn el boton
+     */
+    private void avoidClick(JToggleButton btn) {
+        btn.setSelected(!btn.isSelected());
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem aboutMenuItem;
